@@ -93,10 +93,10 @@ function checkAuthenticated (req, res, next){
 app.get('/upcomingevent', function(req, res){
     console.log(req);
      url = `https://api.songkick.com/api/3.0/search/venues.json?query=`+encodeURIComponent(req.query.venue)+`&apikey=${songkickApikey}`;
-     var resbody7 = "";
+     var resbody = "";
      var venue_id = "";
      var calendarurl = "";
-     var resbody72 = "";
+     var resbody2 = "";
  
      console.log(url);
  
@@ -104,18 +104,18 @@ app.get('/upcomingevent', function(req, res){
          res.setEncoding("UTF-8");
          
          res.on("data", data => {
-             resbody7 += data; 
+             resbody += data; 
          });
          
          res.on("end", () => {
-             resbody7 = JSON.parse(resbody7);
-             console.log(resbody7);
-             console.log(resbody7.resultsPage.totalEntries);
-             console.log(resbody7.resultsPage.totalEntries == 0);
-             if(resbody7.resultsPage.totalEntries == 0){
-                 res7.json(resbody7);
+             resbody = JSON.parse(resbody);
+             console.log(resbody);
+             console.log(resbody.resultsPage.totalEntries);
+             console.log(resbody.resultsPage.totalEntries == 0);
+             if(resbody.resultsPage.totalEntries == 0){
+                 res7.json(resbody);
              }else{
-                 venue_id = resbody7.resultsPage.results.venue[0].id;
+                 venue_id = resbody.resultsPage.results.venue[0].id;
                  console.log("venue_id"+venue_id);
                  
                  calendarurl = `https://api.songkick.com/api/3.0/venues/${venue_id}/calendar.json?apikey=${songkickApikey}`;
@@ -123,21 +123,21 @@ app.get('/upcomingevent', function(req, res){
                      res.setEncoding("utf8");
  
                      res.on("data", data => {
-                         resbody72 += data;
+                         resbody2 += data;
                      });
                      res.on("end", () => {
-                         resbody72 = JSON.parse(resbody72);
-                         console.log(resbody72);
+                         resbody2 = JSON.parse(resbody2);
+                         console.log(resbody2);
  
-                         res7.json(resbody72);
+                         res7.json(resbody2);
                      });
  
-                     resbody72 = "";
+                     resbody2 = "";
                      calendarurl = "";
                      venue_id = "";
                  });       
              }
-             resbody7 = "";
+             resbody = "";
          });
      });
  });
