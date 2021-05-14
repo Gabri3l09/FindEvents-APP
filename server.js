@@ -2,7 +2,9 @@ require('dotenv').config()
 
 const express = require('express');
 const app = express();
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser'); 
+const songkickApikey = "vuoto";
+const https = require("https");
 
 //Google Auth
 const {OAuth2Client} = require('google-auth-library'); // npm install google-auth-library
@@ -84,7 +86,62 @@ function checkAuthenticated (req, res, next){
         res.redirect('/login');
     });
 }
-
+//  API : SongkickAPI upcomingevent
+//  URI : /upcomingevent/:venue
+//  ex  : https://api.songkick.com/api/3.0/search/venues.json?query=colloseum&apikey=1232312
+//  usage : http://localhost:9000/upcomingevent/colloseum
+app.get('/upcomingevent', function(req, res){
+    console.log(req);
+     url = `https://api.songkick.com/api/3.0/search/venues.json?query=`+encodeURIComponent(req.query.venue)+`&apikey=${songkickApikey}`;
+     var resbody7 = "";
+     var venue_id = "";
+     var calendarurl = "";
+     var resbody72 = "";
+ 
+     console.log(url);
+ 
+     https.get(url, res=>{
+         res.setEncoding("UTF-8");
+         
+         res.on("data", data => {
+             resbody7 += data; 
+         });
+         
+         res.on("end", () => {
+             resbody7 = JSON.parse(resbody7);
+             console.log(resbody7);
+             console.log(resbody7.resultsPage.totalEntries);
+             console.log(resbody7.resultsPage.totalEntries == 0);
+             if(resbody7.resultsPage.totalEntries == 0){
+                 res7.json(resbody7);
+             }else{
+                 venue_id = resbody7.resultsPage.results.venue[0].id;
+                 console.log("venue_id"+venue_id);
+                 
+                 calendarurl = `https://api.songkick.com/api/3.0/venues/${venue_id}/calendar.json?apikey=${songkickApikey}`;
+                 https.get(calendarurl, res => {
+                     res.setEncoding("utf8");
+ 
+                     res.on("data", data => {
+                         resbody72 += data;
+                     });
+                     res.on("end", () => {
+                         resbody72 = JSON.parse(resbody72);
+                         console.log(resbody72);
+ 
+                         res7.json(resbody72);
+                     });
+ 
+                     resbody72 = "";
+                     calendarurl = "";
+                     venue_id = "";
+                 });       
+             }
+             resbody7 = "";
+         });
+     });
+ });
+ 
 
 
 app.listen(PORT, () =>{
