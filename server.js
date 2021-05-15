@@ -86,6 +86,8 @@ function checkAuthenticated (req, res, next){
         res.redirect('/login');
     });
 }
+/*
+//  Da testare dopo la API
 //  API : SongkickAPI upcomingevent
 //  URI : /upcomingevent/:venue
 //  ex  : https://api.songkick.com/api/3.0/search/venues.json?query=colloseum&apikey=1232312
@@ -141,7 +143,7 @@ app.get('/upcomingevent', function(req, res){
          });
      });
  });
- 
+ */
 
 
 app.listen(PORT, () =>{
