@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document</title>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <a href="/logout">Sign Out</a>
+        <a href="/chat">Use a chat</a>
+        <h1>Hi <%= user.name %></h1>
+        <img src="<%= user.picture %>" alt=""/><br>
+        
+        <a href="/today">Vedi gli eventi odierni intorno a te</a>
+        <form action='dashboard' method='POST'><input name='luogo' type='name' placeholder='Città evento'/><input name='data' type='date'/><input type="submit" value="Ricerca"/></form>
+        
+    </body>
+</html>

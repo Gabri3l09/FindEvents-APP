@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document</title>
+    </head>
+    <body>
+        <!--
+        Stampa degli eventi estratti dalla query
+        -->
+        <label>Salva l'evento sul calendario nella data <%= data_calendar%></label>
+        <form action='accedi_calendar' method='GET'><input name='evento' type='name' placeholder='Nome evento'/><input name='ora' type='time'/><input name='data' type='date'/><input type='submit' value='inserisci'/></form>
+        <a href="/dashboard">Back</a>
+    </body>
+</html>
