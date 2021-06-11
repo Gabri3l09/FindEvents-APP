@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="Vostro_Client_ID">
+        <meta name="google-signin-client_id" content="940150220374-b6v6om4tatafntgcihdk9od4vti7c74c.apps.googleusercontent.com">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login</title>
     </head>
@@ -19,8 +19,11 @@
         <script>
             function onSignIn(googleUser) {
 
-                var id_token = googleUser.getAuthResponse().id_token;                               
+
+                var id_token = googleUser.getAuthResponse().id_token;
+                               
                 var xhr = new XMLHttpRequest();
+                
                 xhr.open('POST', '/login');
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onload = function() {
