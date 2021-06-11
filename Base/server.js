@@ -38,6 +38,9 @@ var evento_calendar;
 var ora_calendar;
 var ora_fine;
 
+//
+var jacopobrune = [];
+
 
 // Settare la porta e definire vari tools da utilizzare
 const PORT = process.env.PORT || 5000;
@@ -146,7 +149,6 @@ app.post('/dashboard', checkAuthenticated, (req, res) =>{
   var urltm = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ak_ticketm+'&City='+req.body.luogo+'&startDateTime='+req.body.data+'T00:00:00Z&size=5';
   request.get({url:urltm}, function Callback(err, httpResponse, body){
     if(!err && response.statusCode == 200){
-      console.log('body: '+body);
       var dataString = body.toString(); //Stringify the json to turn it to object
       var dataObj = JSON.parse(dataString);
       var eventi = dataObj._embedded;
@@ -196,7 +198,7 @@ app.get('/todaylist', checkAuthenticated, (req, res) =>{
       }
     }
     var lalo=la+','+lo;
-    // var lalo='51.50853,-0.12574';
+    // var lalox='51.50853,-0.12574';
 
 
     var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ak_ticketm+'&latlong='+lalo+'&startDateTime='+dataact+'T00:00:00Z&size=5';
@@ -255,6 +257,48 @@ app.post('/chat', checkAuthenticated, (req, res) => {
     });
   });
   res.render('confins');
+})
+
+// Login admin
+app.post('/logadmin', checkAuthenticated, (req, res) => {
+  var p = req.body.psw;
+  j = [];
+  var i = 0;
+  if (p == process.env.pass){
+    var amqp = require('amqplib/callback_api');
+
+    amqp.connect('amqp://localhost', function(e0, connection) {
+        if (e0) {
+            throw e0;
+        }
+        connection.createChannel(function(e1, channel) {    // creazione del canale
+            if (e1) {
+                throw e1;
+            }
+            var queue = 'Messaggi';     // coda da cui leggo
+            channel.assertQueue(queue, {    // definisco l'idempotenza della coda
+                durable: false
+            });
+            
+            jacopobrune = [];
+
+            channel.consume(queue, function(msg) {      // prelevo le informazioni dalla coda
+                var x =msg.content.toString() 
+                jacopobrune.push(x);
+                i = i + 1;
+            }, {
+                noAck: true
+            });
+        });
+    });
+    
+    //res.send(jacopobrune)
+    lungharr = jacopobrune.length;
+    res.render('logad', {jacopobrune, lungharr});
+  }
+  else{
+    res.render('errorad');
+  }
 })
 
 // Logout
