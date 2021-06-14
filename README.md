@@ -34,6 +34,10 @@ Qual'ora non partissero i comandi come scritti, usare *sudo* per eseguire i coma
 L'avvio dell'applicazione, sulla porta 5000, avviene facendo partire il programma *server.js* ➝ 'node server.js'
 
 Andando sul browser, digitando 'http://localhost:5000', verremo reindirizzato nella pagina di *index.ejs* da cui è possibile fare il login, utilizzando il proprio account google, per accedere al servizio. Una volta acceduti, ci si trova nella pagina *dashboard.ejs*, pagina che può esser definita come hub della nostra applicazione.
+
 Da qui è possibile inserire una città ed una data per cercare un evento in base ai parametri passati, da qui verremo reindirizzati sulla pagina *listevents.ejs* in cui possiamo trovare una tabella con le informazioni relative agli eventi (Nome, Link per l'acquisto del biglietto, Data, Ora). Al di sotto di questa tabella possiamo inserire le informazioni relative all'evento di interesse che possiamo memorizzae nel proprio calendario di google. Compilati i campi e inviato il form si aprirà la schermata di google in cui poter scegliere rispetto quale calendario si vuol memorizzare l'evento. Una volta effettuato l'inserimento, si può ritornare sulla dashboard.
+
+Dalla pagina di *dashboard.ejs* è possibile andare a vedere gli eventi odierni, infatti, cliccando sul link 'Vedi gli eventi odierni intorno a te', si verrà reindirizzati sulla pagina *today.ejs* in cui possiamo trovare una mappa in cui è presente un marker che indica la posizione dell'utente; qual'ora l'utente venisse mappato in modo errato, potrebbe cliccare sul link 'Rimappami' per ricaricare la pagina. Cliccando sul botone di conferma, si verrà reindirizzati sulla pagina *todaylist.ejs* in cui possiamo trovare una pagina molto simile alla pagine di *listevent.ejs*.
+
 
 
