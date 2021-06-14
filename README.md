@@ -1,4 +1,7 @@
 # ProgettoRC.2021 - FindEvents
+Brunetti Jacopo
+Domenico Meconi
+Topplari Fatjion
 
 ## Requisiti richiesti
 1. Il servizio REST deve offrire a terze parti delle API documentate.
@@ -39,5 +42,7 @@ Da qui è possibile inserire una città ed una data per cercare un evento in bas
 
 Dalla pagina di *dashboard.ejs* è possibile andare a vedere gli eventi odierni, infatti, cliccando sul link 'Vedi gli eventi odierni intorno a te', si verrà reindirizzati sulla pagina *today.ejs* in cui possiamo trovare una mappa in cui è presente un marker che indica la posizione dell'utente; qual'ora l'utente venisse mappato in modo errato, potrebbe cliccare sul link 'Rimappami' per ricaricare la pagina. Cliccando sul botone di conferma, si verrà reindirizzati sulla pagina *todaylist.ejs* in cui possiamo trovare una pagina molto simile alla pagine di *listevent.ejs*.
 
+Da *dashboard.ejs*, è possibile anche inviare un messaggio agli amministratori cliccando sul relativo link. Da qui verremo reindirizzati sulla pagina *chat.ejs* in cui è possibile scrivere ed inviare il messaggio agli amministratori.
 
+Per visualizzare i messaggi ricevuti, gli amministratori, possono inserire dalla pagina di *dashboard.ejs* una password, che permetterà di reindirizzare l'amministratore sulla pagina *logad.ejs*, in cui è possibile trovare tutti i messaggi non letti dall'amministratore.
 
