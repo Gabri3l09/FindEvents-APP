@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FindEvents</title>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <h1>Interagisci con gli amministratori!</h1>
+        <h5>Invia un messaggio od una richiesta agli amministratori</h5>
+        <form method="POST" action="chat">
+            <input type="text" name="us" value=<%= user.email%> readonly/>
+            <input type="text" name="msg" placeholder="Contattaci"/>
+            <input type="submit" value="invia"/>
+        </form>
+        <a href="/dashboard">Back</a>
+
+    </body>
+</html>

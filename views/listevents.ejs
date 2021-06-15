@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FindEvents</title>
+        <style>
+            table, th, td{
+                border: 1px solid black; 
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="width:100%">
+            <tr>
+                <td>Evento</td>
+                <td>Link acquisto Ticket Master</td>
+                <td>Data</td>
+                <td>Ora</td>
+            </tr>
+            <tr>
+                <td><%= e0[0] %></td>
+                <td><a href=<%= e0[1] %> ><%= e0[1] %></a></td>
+                <td><%= e0[2] %></td>
+                <td><%= e0[3] %></td>
+            </tr>
+            <tr>
+                <td><%= e1[0] %></td>
+                <td><a href=<%= e1[1] %> ><%= e1[1] %></a></td>
+                <td><%= e1[2] %></td>
+                <td><%= e1[3] %></td>
+            </tr>
+            <tr>
+                <td><%= e2[0] %></td>
+                <td><a href=<%= e2[1] %> ><%= e2[1] %></a></td>
+                <td><%= e2[2] %></td>
+                <td><%= e2[3] %></td>
+    
+            </tr>
+            <tr>
+                <td><%= e3[0] %></td>
+                <td><a href=<%= e3[1] %> ><%= e3[1] %></a></td>
+                <td><%= e3[2] %></td>
+                <td><%= e3[3] %></td>
+    
+            </tr>
+            <tr>
+                <td><%= e4[0] %></td>
+                <td><a href=<%= e4[1] %> ><%= e4[1] %></a></td>
+                <td><%= e4[2] %></td>
+                <td><%= e4[3] %></td>
+    
+            </tr>
+        </table>
+        
+        <form action='accedi_calendar' method='GET'><input name='evento' type='name' placeholder='Nome evento'/><input name='ora' type='time'/><input name='data' type='date'/><input type='submit' value='inserisci'/></form>
+        <a href="/dashboard">Back</a>
+    </body>
+</html>

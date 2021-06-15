@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://maps.googleapis.com/maps/api/js?key="+akmap></script>
+        <title>FindEvents</title>
+    </head>
+    <body>
+
+        <div id="map" style="height: 600px; width: 100%"></div>
+        <form action="/todaylist" method="get">
+            <label>Latitudine:</label>
+            <input type="text" name="latitudine" id="latit" readonly/><br>
+            <label>Longitude:</label>
+            <input type="text" name="longitudine" id="longit" readonly/><br>
+            <input type="submit" value="Conferma luogo"/><a href="/today">Rimappami</a>
+        </form>
+        
+
+        <script type="text/javascript">
+            x = navigator.geolocation;
+            x.getCurrentPosition(success, failure);
+            function success(position){
+                
+                var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var lat = position.coords.latitude;
+                var long = position.coords.longitude;
+                console.log(lat);
+                var mapOptions = {
+                    zoom: 12,
+                    center: coords
+                }
+
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                var marker = new google.maps.Marker({
+                    map:map,
+                    position:coords
+                })
+                document.getElementById("latit").value = lat;
+                document.getElementById("longit").value = long;
+            }
+            
+            function failure(){
+                console.log('errore');
+            }
+        </script>
+
+    </body>
+</html>
