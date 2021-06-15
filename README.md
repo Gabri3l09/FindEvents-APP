@@ -29,6 +29,10 @@ npm install google-auth-library
 npm install ejs
 npm install dotenv
 ```
+Per far partire l'istanza *Docker* bisogna inserire da console la seguente istruzione:
+```
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-managment 
+```
 Qual'ora non partissero i comandi come scritti, usare *sudo* per eseguire i comandi come amministratore
 
 ## Come muoversi nell'applicazione
