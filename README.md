@@ -1,5 +1,5 @@
 # ProgettoRC.2021 - FindEvents
-Brunetti Jacopo - Domenico Meconi - Topllari Fatjion
+Brunetti Jacopo - Domenico Meconi - Topllari Fatjon
 
 ## Requisiti richiesti
 1. Il servizio REST deve offrire a terze parti delle API documentate.
