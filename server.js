@@ -39,7 +39,7 @@ var ora_calendar;
 var ora_fine;
 
 //
-var jacopobrune = [];
+var msx = [];
 
 
 // Settare la porta e definire vari tools da utilizzare
@@ -144,27 +144,23 @@ app.get('/dashboard', checkAuthenticated, (req, res) =>{
 
 // Lista degli eventi
 app.post('/dashboard', checkAuthenticated, (req, res) =>{
-  const ak_ticketm = process.env.key_tm;
-  var urltm = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ak_ticketm+'&City='+req.body.luogo+'&startDateTime='+req.body.data+'T00:00:00Z&size=5';
-  request.get({url:urltm}, function Callback(err, httpResponse, body){
-    if(!err && response.statusCode == 200){
-      var dataString = body.toString(); //Stringify the json to turn it to object
-      var dataObj = JSON.parse(dataString);
-      var eventi = dataObj._embedded;
-      if (!eventi){
-        res.render('error');
+  var url = 'http://localhost:5000/findbyplace?luogo='+req.body.luogo+'&data='+req.body.data+'&size=5';
+    request.get({url:url}, function Callback(err, httpResponse, body) {
+      if(!err && response.statusCode == 200){
+          var dataString = body.toString(); //Stringify the json to turn it to object
+          var eventi = JSON.parse(dataString);
+          var x = eventi.event
+          if (!x[0]){
+            res.render('error');
+          }
+          else{
+            res.render('listevents',{x})
+        }
       }
       else{
-        var e0 = [eventi.events[0].name, eventi.events[0].url, eventi.events[0].dates.start.localDate, eventi.events[0].dates.start.localTime];
-        var e1 = [eventi.events[1].name, eventi.events[1].url, eventi.events[1].dates.start.localDate, eventi.events[1].dates.start.localTime];
-        var e2 = [eventi.events[2].name, eventi.events[2].url, eventi.events[2].dates.start.localDate, eventi.events[2].dates.start.localTime];
-        var e3 = [eventi.events[3].name, eventi.events[3].url, eventi.events[3].dates.start.localDate, eventi.events[3].dates.start.localTime];
-        var e4 = [eventi.events[4].name, eventi.events[4].url, eventi.events[4].dates.start.localDate, eventi.events[4].dates.start.localTime];
-        res.render('listevents',{e0, e1, e2, e3, e4})
-    }
-    }
+          res.send("Errore richiesta")
+      }
   });
-
 })
 
 // Lista eventi odierni intorno all'utente
@@ -175,7 +171,25 @@ app.get('/today', checkAuthenticated, (req, res) =>{
 
 // Lista eventi odierni intorno all'utente
 app.get('/todaylist', checkAuthenticated, (req, res) =>{
-  var la = req.query.latitudine;
+  var url = 'http://localhost:5000/findtodayevents?longitudine='+req.query.longitudine+'&latitudine='+req.query.latitudine;+'&size=5';
+  request.get({url:url}, function Callback(err, httpResponse, body) {
+    if(!err && response.statusCode == 200){
+        var dataString = body.toString(); //Stringify the json to turn it to object
+        var eventi = JSON.parse(dataString);
+        var x = eventi.event
+        if (!x[0]){
+          res.render('error');
+        }
+        else{
+          res.render('listevents',{x})
+      }
+    }
+    else{
+        res.send("Errore richiesta")
+    }
+  });
+  ///////////////////////////////////////7
+  /*var la = req.query.latitudine;
   var lo = req.query.longitudine;
   const ak_ticketm = process.env.key_tm;
     var dataattuale = new Date();
@@ -226,10 +240,10 @@ app.get('/todaylist', checkAuthenticated, (req, res) =>{
           console.log(error);
       }
 
-  });
+  });*/
 })
 
-// LiveChat 
+// Request to admin
 app.get('/chat', checkAuthenticated, (req, res) => {
   res.render('chat', {user});
 })
@@ -279,21 +293,19 @@ app.post('/logadmin', checkAuthenticated, (req, res) => {
                 durable: false
             });
             
-            jacopobrune = [];
+            msx = [];
 
             channel.consume(queue, function(msg) {      // prelevo le informazioni dalla coda
                 var x =msg.content.toString() 
-                jacopobrune.push(x);
+                msx.push(x);
                 i = i + 1;
             }, {
                 noAck: true
             });
         });
     });
-    
-    //res.send(jacopobrune)
-    lungharr = jacopobrune.length;
-    res.render('logad', {jacopobrune, lungharr});
+    lungharr = msx.length;
+    res.render('logad', {msx, lungharr});
   }
   else{
     res.render('errorad');
@@ -332,4 +344,93 @@ function checkAuthenticated (req, res, next){
 
 app.listen(PORT, () =>{
     console.log('Server running on port: ' + PORT);
+})
+
+
+//////////////////////////////////////////////////////////////////////////
+/*******************************API FORNITE******************************/
+//////////////////////////////////////////////////////////////////////////
+// Trova eventi odierni in base alle coordinate
+app.get('/findtodayevents', (req, res) =>{
+  const ak_ticketm = process.env.key_tm;
+    var dataattuale = new Date();
+    var dataact;
+    if((dataattuale.getMonth()+1)<10){
+      if((dataattuale.getDate())<10){
+        dataact = dataattuale.getFullYear()+'-0'+(dataattuale.getMonth()+1)+'-0'+dataattuale.getDate();
+      }
+      else{
+        dataact = dataattuale.getFullYear()+'-0'+(dataattuale.getMonth()+1)+'-'+dataattuale.getDate();
+      }
+    }
+    else{
+      if((dataattuale.getDate())<10){
+        dataact = dataattuale.getFullYear()+'-'+(dataattuale.getMonth()+1)+'-0'+dataattuale.getDate();
+      }
+      else{
+        dataact = dataattuale.getFullYear()+'-'+(dataattuale.getMonth()+1)+'-'+dataattuale.getDate();
+      }
+    }
+
+    var lalo=req.query.latitudine+','+req.query.longitudine;
+
+    var objres = {
+      event: []
+    };
+
+    var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ak_ticketm+'&latlong='+lalo+'&startDateTime='+dataact+'T00:00:00Z&size='+req.query.size;
+    request.get({url:url}, function Callback(err, httpResponse, body) {
+      if(!err && response.statusCode == 200){
+        var dataString = body.toString(); //Stringify the json to turn it to object
+        var dataObj = JSON.parse(dataString);
+          if (!dataObj._embedded){
+            res.send(objres);
+          }
+          else{
+            var bu = dataObj._embedded.events;
+            for (i = 0; i < req.query.size; i++){
+              objres.event.push({
+                name: bu[i].name,
+                link: bu[i].url,
+                data: bu[i].dates.start.localDate,
+                ora: bu[i].dates.start.localTime,
+                luogo: bu[i]._embedded.venues[0].name
+              })
+            }
+            res.send(objres);
+          }
+      }
+  });
+})
+
+// Trova eventi in base alla città e data
+app.get('/findbyplace', (req, res) =>{
+  const ak_ticketm = process.env.key_tm;
+  var objres = {
+    event: []
+  };
+  var urltm = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ak_ticketm+'&City='+req.query.luogo+'&startDateTime='+req.query.data+'T00:00:00Z&size='+req.query.size;
+  request.get({url:urltm}, function Callback(err, httpResponse, body){
+    if(!err && response.statusCode == 200){
+      var dataString = body.toString(); //Stringify the json to turn it to object
+      var dataObj = JSON.parse(dataString);
+        if (!dataObj._embedded){
+          console.log(objres);
+          res.send(objres);
+        }
+        else{
+          var bu = dataObj._embedded.events;
+          for (i = 0; i < req.query.size; i++){
+            objres.event.push({
+              name: bu[i].name,
+              link: bu[i].url,
+              data: bu[i].dates.start.localDate,
+              ora: bu[i].dates.start.localTime,
+              luogo: bu[i]._embedded.venues[0].name
+            })
+          }
+          res.send(objres);
+        }
+    }
+  });
 })

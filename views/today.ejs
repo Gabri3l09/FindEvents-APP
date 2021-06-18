@@ -5,14 +5,15 @@
         <title>FindEvents</title>
     </head>
     <body>
-
-        <div id="map" style="height: 600px; width: 100%"></div>
+        <h3>Verificare la propria posizione</h3>
+        <div id="map" style="height: 600px; width: 80%"></div>
         <form action="/todaylist" method="get">
             <label>Latitudine:</label>
             <input type="text" name="latitudine" id="latit" readonly/><br>
             <label>Longitude:</label>
             <input type="text" name="longitudine" id="longit" readonly/><br>
-            <input type="submit" value="Conferma luogo"/><a href="/today">Rimappami</a>
+            <input type="submit" value="Conferma luogo"/><br>Non è la mia poszione, <a href="/today">Rimappami</a><br>
+            <a href="/dashboard">Back</a>
         </form>
         
 
