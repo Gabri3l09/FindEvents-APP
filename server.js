@@ -171,7 +171,9 @@ app.get('/today', checkAuthenticated, (req, res) =>{
 
 // Lista eventi odierni intorno all'utente
 app.get('/todaylist', checkAuthenticated, (req, res) =>{
-  var url = 'http://localhost:5000/findtodayevents?longitudine='+req.query.longitudine+'&latitudine='+req.query.latitudine;+'&size=5';
+  //var url = 'http://localhost:5000/findtodayevents?longitudine='+req.query.longitudine+'&latitudine='+req.query.latitudine;+'&size=5';
+  var url = 'http://localhost:5000/findtodayevents?longitudine='+req.query.longitudine+'&latitudine='+req.query.latitudine+'&size=5';
+  
   request.get({url:url}, function Callback(err, httpResponse, body) {
     if(!err && response.statusCode == 200){
         var dataString = body.toString(); //Stringify the json to turn it to object
@@ -181,7 +183,7 @@ app.get('/todaylist', checkAuthenticated, (req, res) =>{
           res.render('error');
         }
         else{
-          res.render('listevents',{x})
+          res.render('todaylist',{x})
       }
     }
     else{
@@ -189,58 +191,6 @@ app.get('/todaylist', checkAuthenticated, (req, res) =>{
     }
   });
   ///////////////////////////////////////7
-  /*var la = req.query.latitudine;
-  var lo = req.query.longitudine;
-  const ak_ticketm = process.env.key_tm;
-    var dataattuale = new Date();
-    var dataact;
-    if((dataattuale.getMonth()+1)<10){
-      if((dataattuale.getDate())<10){
-        dataact = dataattuale.getFullYear()+'-0'+(dataattuale.getMonth()+1)+'-0'+dataattuale.getDate();
-      }
-      else{
-        dataact = dataattuale.getFullYear()+'-0'+(dataattuale.getMonth()+1)+'-'+dataattuale.getDate();
-      }
-    }
-    else{
-      if((dataattuale.getDate())<10){
-        dataact = dataattuale.getFullYear()+'-'+(dataattuale.getMonth()+1)+'-0'+dataattuale.getDate();
-      }
-      else{
-        dataact = dataattuale.getFullYear()+'-'+(dataattuale.getMonth()+1)+'-'+dataattuale.getDate();
-      }
-    }
-    var lalo=la+','+lo;
-    // var lalox='51.50853,-0.12574';
-
-
-    var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ak_ticketm+'&latlong='+lalo+'&startDateTime='+dataact+'T00:00:00Z&size=5';
-    request.get({url:url}, function Callback(err, httpResponse, body) {
-      if(!err && response.statusCode == 200){
-          
-          var dataString = body.toString(); //Stringify the json to turn it to object
-          var dataObj = JSON.parse(dataString);
-          var eventi = dataObj._embedded;
-          if (!eventi){
-              res.render('error');
-          }
-          else{
-              var e0 = [eventi.events[0].name, eventi.events[0].url, eventi.events[0].dates.start.localDate, eventi.events[0].dates.start.localTime];
-              var e1 = [eventi.events[1].name, eventi.events[1].url, eventi.events[1].dates.start.localDate, eventi.events[1].dates.start.localTime];
-              var e2 = [eventi.events[2].name, eventi.events[2].url, eventi.events[2].dates.start.localDate, eventi.events[2].dates.start.localTime];
-              var e3 = [eventi.events[3].name, eventi.events[3].url, eventi.events[3].dates.start.localDate, eventi.events[3].dates.start.localTime];
-              var e4 = [eventi.events[4].name, eventi.events[4].url, eventi.events[4].dates.start.localDate, eventi.events[4].dates.start.localTime];
-              res.render('todaylist',{e0, e1, e2, e3, e4})
-          }
-
-          //res.send(eventi.events[0]);
-          
-      }
-      else{
-          console.log(error);
-      }
-
-  });*/
 })
 
 // Request to admin
@@ -415,7 +365,6 @@ app.get('/findbyplace', (req, res) =>{
       var dataString = body.toString(); //Stringify the json to turn it to object
       var dataObj = JSON.parse(dataString);
         if (!dataObj._embedded){
-          console.log(objres);
           res.send(objres);
         }
         else{
@@ -429,6 +378,7 @@ app.get('/findbyplace', (req, res) =>{
               luogo: bu[i]._embedded.venues[0].name
             })
           }
+
           res.send(objres);
         }
     }

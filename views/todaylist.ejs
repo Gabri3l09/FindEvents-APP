@@ -20,40 +20,17 @@
                 <td>Link acquisto Ticket Master</td>
                 <td>Data</td>
                 <td>Ora</td>
+                <td>Luogo</td>
             </tr>
-            <tr>
-                <td><%= e0[0] %></td>
-                <td><a href=<%= e0[1] %> ><%= e0[1] %></a></td>
-                <td><%= e0[2] %></td>
-                <td><%= e0[3] %></td>
-            </tr>
-            <tr>
-                <td><%= e1[0] %></td>
-                <td><a href=<%= e1[1] %> ><%= e1[1] %></a></td>
-                <td><%= e1[2] %></td>
-                <td><%= e1[3] %></td>
-            </tr>
-            <tr>
-                <td><%= e2[0] %></td>
-                <td><a href=<%= e2[1] %> ><%= e2[1] %></a></td>
-                <td><%= e2[2] %></td>
-                <td><%= e2[3] %></td>
-    
-            </tr>
-            <tr>
-                <td><%= e3[0] %></td>
-                <td><a href=<%= e3[1] %> ><%= e3[1] %></a></td>
-                <td><%= e3[2] %></td>
-                <td><%= e3[3] %></td>
-    
-            </tr>
-            <tr>
-                <td><%= e4[0] %></td>
-                <td><a href=<%= e4[1] %> ><%= e4[1] %></a></td>
-                <td><%= e4[2] %></td>
-                <td><%= e4[3] %></td>
-    
-            </tr>
+            <% for(var i=0; i<5; i++) {%>
+                <tr>
+                    <td><%= x[i].name %></td>
+                    <td><a href=<%= x[i].link %>><%= x[i].link %></a></td>
+                    <td><%= x[i].data %></td>
+                    <td><%= x[i].ora %></td>
+                    <td><%= x[i].luogo %></td>
+                </tr>
+             <% } %>
         </table>
         <a href="/dashboard">Back</a>
     </body>
