@@ -12,10 +12,11 @@ Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
 ## Breve descrizione del progetto
 **FindEvent** è un'applicazione web che può essere utilizzata, come suggerisce il nome, per la ricerca di eventi in un determinato un luogo, in una determinata una data o per la ricerca di eventi che si svolgono nella giornata odierna intorno all'utente. Quest'applicazione è nata con l'intento voler aiutare gli utenti nella ricerca di eventi futuri di qualsiasi genere (sportivi, musicali, teatrali, ...) o per agevolare la ricerca di eventi intorno a se.
  
-## Servizi esterni utilizzati
+## Servizi utilizzati
 - Google (Autenticazion) - REST
-- Google Maps (Localizzazione) - REST
-- Google Calendar (Memorizzare evento sul calendario) -REST
+- Google Maps (Localizzazione)
+- Google Calendar (Memorizzare evento sul calendario) - REST
+- Ticket Master (Eventi) - REST
 - RabbitMQ (Message queue) - Async protocol
 
 ## Predisporre la macchina per supportare l'applicazione
