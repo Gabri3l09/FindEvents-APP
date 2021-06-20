@@ -46,5 +46,5 @@ Dalla pagina di *dashboard.ejs* è possibile andare a vedere gli eventi odierni,
 
 Da *dashboard.ejs*, è possibile anche inviare un messaggio agli amministratori cliccando sul relativo link. Da qui verremo reindirizzati sulla pagina *chat.ejs* in cui è possibile scrivere ed inviare il messaggio agli amministratori.
 
-Per visualizzare i messaggi ricevuti, gli amministratori, possono inserire dalla pagina di *dashboard.ejs* una password, che permetterà di reindirizzare l'amministratore sulla pagina *logad.ejs*, in cui è possibile trovare tutti i messaggi non letti dall'amministratore.
+Per visualizzare i messaggi ricevuti, gli amministratori, possono inserire dalla pagina di *dashboard.ejs* una password, che gli permetterà di arrivare sulla pagina *logad.ejs*, in cui è possibile trovare tutti i messaggi non letti dall'amministratore.
 
