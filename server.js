@@ -69,7 +69,6 @@ app.post('/login', (req, res) =>{
             audience: CLIENT_ID,
         });
         const payload = ticket.getPayload();
-        const userid = payload['sub'];
         console.log('Accesso da: ' + payload.email);
     }
     verify().then(()=>{
@@ -282,7 +281,6 @@ function checkAuthenticated (req, res, next){
         const payload = ticket.getPayload();
         user.name = payload.name;
         user.email = payload.email;
-        user.picture = payload.picture;
     }
     verify().then(()=>{
         req.user = user;
@@ -291,6 +289,7 @@ function checkAuthenticated (req, res, next){
         res.redirect('/');
     });
 }
+
 
 app.listen(PORT, () =>{
     console.log('Server running on port: ' + PORT);
