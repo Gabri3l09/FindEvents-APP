@@ -16,7 +16,7 @@ Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
 - Google (Autenticazion) - REST
 - Google Maps (Localizzazione) - REST
 - Google Calendar (Memorizzare evento sul calendario) -REST
-- RabbitMQ (Message queue) / WebSocket (Chat) - Async protocol
+- RabbitMQ (Message queue) - Async protocol
 
 ## Predisporre la macchina per supportare l'applicazione
 L'applicazione è prevista per il funzionamento su sistemi operativi Linux. Il server è basato sul linguaggio *Node.js* e prevede l'utilizzo di contenitori *Docker* per supportare l'applicazione *RabbitMQ*. Inoltre per il corretto funzionamento dell'applicazione è necessario installare alcuni *node modules*:
