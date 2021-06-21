@@ -1,4 +1,4 @@
-# API fornite dal servizio
+# API fornite
 
 * Richiesta degli eventi per luogo e data:
   * GET
