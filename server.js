@@ -39,7 +39,12 @@ var evento_calendar;
 var ora_calendar;
 var ora_fine;
 
-//
+// Email admin
+var jac = process.env.em_b;
+var dom = process.env.em_m;
+var toni = process.env.em_t;
+
+// Coda dei messaggi
 var msx = [];
 
 
@@ -139,7 +144,7 @@ app.get('/confirmins', checkAuthenticated, function(req, res){
 // arrivo alla dashboard
 app.get('/dashboard', checkAuthenticated, (req, res) =>{
     user = req.user;
-    res.render('dashboard', {user});
+    res.render('dashboard', {user, jac, dom, toni});
 })
 
 // Lista degli eventi
@@ -171,7 +176,6 @@ app.get('/today', checkAuthenticated, (req, res) =>{
 
 // Lista eventi odierni intorno all'utente
 app.get('/todaylist', checkAuthenticated, (req, res) =>{
-  //var url = 'http://localhost:5000/findtodayevents?longitudine='+req.query.longitudine+'&latitudine='+req.query.latitudine;+'&size=5';
   var url = 'http://localhost:5000/findtodayevents?longitudine='+req.query.longitudine+'&latitudine='+req.query.latitudine+'&size=5';
   
   request.get({url:url}, function Callback(err, httpResponse, body) {
@@ -225,7 +229,6 @@ app.post('/chat', checkAuthenticated, (req, res) => {
 // Login admin
 app.post('/logadmin', checkAuthenticated, (req, res) => {
   var p = req.body.psw;
-  j = [];
   var i = 0;
   if (p == process.env.pass){
     var amqp = require('amqplib/callback_api');

@@ -19,9 +19,8 @@
         <br>
         <a href="/logout" style="color:red">Sign Out</a>
         <a href="/chat">Invia un messaggio ai nostri admin!!</a><br><br><hr>
-        <form action='logadmin' method='POST'><label>Sei admin?</label>
-            <input name='psw' type='password' placeholder='Inserisci password'/>
-            <input type="submit" value="Vai!"/></form>
-
+        <% if (user.email == jac || user.email == dom || user.email == toni){%>
+            <form action='logadmin' method='POST'><label>Sei admin?</label><input name='psw' type='password' placeholder='Inserisci password'/><input type="submit" value="Vai!"/></form>
+        <% } %>
     </body>
 </html>
