@@ -68,7 +68,7 @@ define({ "api": [
             "type": "Object[]",
             "optional": false,
             "field": "event",
-            "description": "<p>Array di data dei eventi</p>"
+            "description": "<p>json eventi in risposta</p>"
           }
         ]
       },
@@ -125,7 +125,7 @@ define({ "api": [
             "type": "Object[]",
             "optional": false,
             "field": "event",
-            "description": "<p>Array di data dei eventi</p>"
+            "description": "<p>json eventi in risposta</p>"
           }
         ]
       },

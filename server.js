@@ -303,7 +303,6 @@ app.listen(PORT, () =>{
 //////////////////////////////////////////////////////////////////////////
 /*******************************API FORNITE******************************/
 //////////////////////////////////////////////////////////////////////////
-// Trova eventi odierni in base alle coordinate
 
 
 /*******************************APIDOC******************************/
@@ -315,7 +314,7 @@ app.listen(PORT, () =>{
 * @apiParam {String} location Città dell'evento
 * @apiParam {Date} date Data formato aaaa-mm-gg
 * @apiParam {Number} nrEvents Quanti eventi si vuol vedere
-* @apiSuccess {Object[]} event Array di data dei eventi
+* @apiSuccess {Object[]} event json eventi in risposta
 * 
 *
 * @apiSuccessExample Success-Response:
@@ -335,6 +334,7 @@ app.listen(PORT, () =>{
 */
 /*******************************APIDOC******************************/
 
+// Trova eventi odierni in base alle coordinate
 
 app.get('/findtodayevents', (req, res) =>{
   const ak_ticketm = process.env.key_tm;
@@ -388,8 +388,6 @@ app.get('/findtodayevents', (req, res) =>{
   });
 })
 
-// Trova eventi in base alla città e data
-
 /*******************************APIDOC******************************/
 /**
 * @api {get} /findtodayevents?longitudine={long}&latitudine={lat}&size={nrEvents} by long/lat
@@ -399,7 +397,7 @@ app.get('/findtodayevents', (req, res) =>{
 * @apiParam {String} long Longitudine
 * @apiParam {String} lat Latitudine
 * @apiParam {Number} nrEvents Quanti eventi si vuol vedere
-* @apiSuccess {Object[]} event Array di data dei eventi
+* @apiSuccess {Object[]} event json eventi in risposta
 * 
 *
 * @apiSuccessExample Success-Response:
@@ -418,6 +416,7 @@ app.get('/findtodayevents', (req, res) =>{
 */
 /*******************************APIDOC******************************/
 
+// Trova eventi in base alla città e data
 
 app.get('/findbyplace', (req, res) =>{
   const ak_ticketm = process.env.key_tm;
