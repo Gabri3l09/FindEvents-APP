@@ -41,7 +41,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "location",
-            "description": "<p>Cita del evento</p>"
+            "description": "<p>Città dell'evento</p>"
           },
           {
             "group": "Parameter",
@@ -55,7 +55,7 @@ define({ "api": [
             "type": "Number",
             "optional": false,
             "field": "nrEvents",
-            "description": "<p>Qunanti evento voi vedere</p>"
+            "description": "<p>Quanti eventi si vuol vedere</p>"
           }
         ]
       }
@@ -75,7 +75,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"event\": [\n        {\n            \"name\": \"2021 Rome Braves Regular Season\",\n            \"link\": \"https://www.ticketmaster.com/2021-rome-braves-regular-season-rome-georgia-09-18-2021/event/0E005A8CB92223B5\",\n            \"data\": \"2021-09-18\",\n            \"ora\": \"18:00:00\",\n            \"luogo\": \"State Mutual Stadium\"\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n'json eventi in risposta'",
           "type": "json"
         }
       ]
@@ -112,7 +112,7 @@ define({ "api": [
             "type": "Number",
             "optional": false,
             "field": "nrEvents",
-            "description": "<p>Qunanti evento voi vedere</p>"
+            "description": "<p>Quanti eventi si vuol vedere</p>"
           }
         ]
       }
@@ -132,7 +132,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"event\": [\n        {\n            \"name\": \"2021 Rome Braves Regular Season\",\n            \"link\": \"https://www.ticketmaster.com/2021-rome-braves-regular-season-rome-georgia-09-18-2021/event/0E005A8CB92223B5\",\n            \"data\": \"2021-09-18\",\n            \"ora\": \"18:00:00\",\n            \"luogo\": \"State Mutual Stadium\"\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 OK\n'json eventi in risposta'",
           "type": "json"
         }
       ]
