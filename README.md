@@ -11,7 +11,7 @@ Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
 
 ## Breve descrizione del progetto
 **FindEvent** è un'applicazione web che può essere utilizzata, come suggerisce il nome, per la ricerca di eventi in un determinato un luogo, in una determinata una data o per la ricerca di eventi che si svolgono nella giornata odierna intorno all'utente. Quest'applicazione è nata con l'intento voler aiutare gli utenti nella ricerca di eventi futuri di qualsiasi genere (sportivi, musicali, teatrali, ...) o per agevolare la ricerca di eventi intorno a se.
- 
+
 ## Servizi utilizzati
 - Google (Autenticazion)
 - Google Maps (Localizzazione)
@@ -32,7 +32,7 @@ npm install dotenv
 ```
 Per far partire l'istanza *Docker* bisogna inserire da console la seguente istruzione:
 ```
-docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-managment 
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-managment
 ```
 ###### Qual'ora non partissero i comandi come scritti, usare *sudo* per eseguire i comandi come amministratore
 
@@ -49,3 +49,5 @@ Da *dashboard.ejs*, è possibile anche inviare un messaggio agli amministratori 
 
 Per visualizzare i messaggi ricevuti, gli amministratori, possono inserire dalla pagina di *dashboard.ejs* una password, che gli permetterà di arrivare sulla pagina *logad.ejs*, in cui è possibile trovare tutti i messaggi non letti dall'amministratore.
 
+## Come vedere apiDoc
+Apri sul browser 'http://localhost:5000/docs/'
