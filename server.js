@@ -305,6 +305,8 @@ app.listen(PORT, () =>{
 //////////////////////////////////////////////////////////////////////////
 // Trova eventi odierni in base alle coordinate
 
+
+/*******************************APIDOC******************************/
 /**
 * @api {get} /findbyplace?luogo={location}&data={date}&size={nrEvents} by location/date
 * @apiName GetEventsLocDate
@@ -331,7 +333,7 @@ app.listen(PORT, () =>{
 * }
 *
 */
-
+/*******************************APIDOC******************************/
 
 
 app.get('/findtodayevents', (req, res) =>{
@@ -388,6 +390,7 @@ app.get('/findtodayevents', (req, res) =>{
 
 // Trova eventi in base alla città e data
 
+/*******************************APIDOC******************************/
 /**
 * @api {get} /findtodayevents?longitudine={long}&latitudine={lat}&size={nrEvents} by long/lat
 * @apiName GetEventsLonLat
@@ -413,6 +416,8 @@ app.get('/findtodayevents', (req, res) =>{
 *     ]
 * }
 */
+/*******************************APIDOC******************************/
+
 
 app.get('/findbyplace', (req, res) =>{
   const ak_ticketm = process.env.key_tm;
