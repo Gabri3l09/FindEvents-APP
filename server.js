@@ -318,7 +318,18 @@ app.listen(PORT, () =>{
 *
 * @apiSuccessExample Success-Response:
 * HTTP/1.1 200 OK
-* 'json eventi in risposta'
+* {
+*     "event": [
+*         {
+*             "name": "2021 Rome Braves Regular Season",
+*             "link": "https://www.ticketmaster.com/2021-rome-braves-regular-season-rome-georgia-09-18-2021/event/0E005A8CB92223B5",
+*             "data": "2021-09-18",
+*             "ora": "18:00:00",
+*             "luogo": "State Mutual Stadium"
+*         }
+*     ]
+* }
+*
 */
 
 
@@ -390,7 +401,17 @@ app.get('/findtodayevents', (req, res) =>{
 *
 * @apiSuccessExample Success-Response:
 * HTTP/1.1 200 OK
-* 'json eventi in risposta'
+* {
+*     "event": [
+*         {
+*             "name": "2021 Rome Braves Regular Season",
+*             "link": "https://www.ticketmaster.com/2021-rome-braves-regular-season-rome-georgia-09-18-2021/event/0E005A8CB92223B5",
+*             "data": "2021-09-18",
+*             "ora": "18:00:00",
+*             "luogo": "State Mutual Stadium"
+*         }
+*     ]
+* }
 */
 
 app.get('/findbyplace', (req, res) =>{
