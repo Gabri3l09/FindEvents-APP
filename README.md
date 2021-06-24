@@ -1,6 +1,6 @@
 # ProgettoRC.2021 - FindEvents
 Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
-
+<img src="https://github.com/Gabri3l09/ProgettoRC.2021/blob/main/SchemaApp.png"/>
 ## Requisiti richiesti
 1. Il servizio REST deve offrire a terze parti delle API documentate.
 2. SERV si deve interfacciare con almeno due servizi REST di terze parti.
