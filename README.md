@@ -1,9 +1,6 @@
 # ProgettoRC.2021 - FindEvents
 Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
 
-## Schema di riferimento
-<img src="https://github.com/Gabri3l09/ProgettoRC.2021/blob/main/SchemaApp.png"/>
-
 ## Requisiti richiesti
 1. Il servizio REST deve offrire a terze parti delle API documentate.
 2. SERV si deve interfacciare con almeno due servizi REST di terze parti.
@@ -11,6 +8,9 @@ Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
 4. Almeno uno dei servizi REST esterni deve richiedere oauth.
 5. La soluzione deve prevedere l'uso di protocolli asincroni.
 6. Il progetto deve essere su GIT.
+
+## Schema di riferimento
+<img src="https://github.com/Gabri3l09/ProgettoRC.2021/blob/main/SchemaApp.png"/>
 
 ## Breve descrizione del progetto
 **FindEvent** è un'applicazione web che può essere utilizzata, come suggerisce il nome, per la ricerca di eventi in un determinato un luogo, in una determinata una data o per la ricerca di eventi che si svolgono nella giornata odierna intorno all'utente. Quest'applicazione è nata con l'intento voler aiutare gli utenti nella ricerca di eventi futuri di qualsiasi genere (sportivi, musicali, teatrali, ...) o per agevolare la ricerca di eventi intorno a se.
