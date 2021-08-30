@@ -1,4 +1,4 @@
-# ProgettoRC.2021 - FindEvents
+# FindEvents
 Brunetti Jacopo <br> Domenico Meconi <br> Topllari Fatjon
 
 ## Requisiti richiesti
